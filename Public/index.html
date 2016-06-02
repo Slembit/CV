@@ -1,15 +1,75 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+	<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.whiteFrame{
+			border: 5px solid white;
+			margin: 150px;
+			color: white;
+		}
+		.profile{
+			margin: 150px;
+		}
+		.black{
+			background-color: black;
+			background-repeat: no-repeat;
+		}
+		.red{
+			background-color: red;
+		}
+		.centerText{
+			text-align: center;
+			margin-top: 50%;
+			margin-bottom: 50%;
+		}
+	/*   	#bckgrnd{
+	width: 1000px;
+	} */
+	.fadeInBlock {
+		opacity:0;
+	}
+	#cycler{
+		position:relative;
+	}
+	#cycler img
+	{position:absolute;z-index:1
+	}
+	#cycler img.active{
+		z-index:3
+	}
+	</style>
+	<title>My Now Amazing Webpage</title>
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	</head>
+	<body>
+
+		<div id="bckgrnd" class="background black">
+
+			<div class="profile">
+			  <div class="whiteFrame">
+			  	<div class="centerText">Erik Lövenstad</div>
+			  </div>
+			  <div class="whiteFrame">
+			  	<div class="centerText">Marcus Zoltan</div>
+			  </div>
+			  <div class="whiteFrame">
+			  	<div class="centerText">Peppe Bira</div>
+			  </div>
+			  <div class="whiteFrame">
+			  	<div class="centerText">Klen Pappa</div>
+			  </div>
+			  <div class="whiteFrame">
+			  	<div class="centerText">Gunnar Fotlukt</div>
+			  </div>
+			</div>
+		</div>
 
 
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="main.js"></script>
-</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="slick/slick.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+
+	</body>
 </html>
