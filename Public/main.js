@@ -8,6 +8,7 @@ var theID=1;
 var slideItem;
 var slideindex = 0;
 var backgroundArray =[];
+var currentBg=2;
 
 
 
@@ -23,10 +24,25 @@ var slideCount = $("#slider").slick("getSlick").slideCount;
 console.log("currentSlider: "+currentSlider);
 //console.log("slideCount: "+slideCount);
 //console.log(currentSlider+4 >= slideCount);
-
+var	currentSlider1 = currentSlider+1;
 	if(direction == "left"){
-
-	   $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
+		if(currentBg == 1){
+			$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
+			$('#sliderBg1').css('opacity', '1');
+			$('#sliderBg3').css('opacity', '0');
+			currentBg++;
+		}else if(currentBg == 2){
+			$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
+			$('#sliderBg2').css('opacity', '1');
+			$('#sliderBg1').css('opacity', '0');
+			currentBg++;
+		}else{
+			$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
+			$('#sliderBg3').css('opacity', '1');
+			$('#sliderBg2').css('opacity', '0');
+			currentBg=1;
+		}
+	   
 
 		console.log(backgroundArray);
 
@@ -36,7 +52,9 @@ console.log("currentSlider: "+currentSlider);
 			console.log("lul");
 		}
 	}else if(direction == "right"){
-	   $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
+	  $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
+	
+	   	
 
 	}	
 
@@ -94,7 +112,8 @@ function getProfilesStart(id){
 
 
 			});
-	     $('#sliderBg').css('background-image','url('+backgroundArray[0]+')');
+	     $('#sliderBg1').css('background-image','url('+backgroundArray[0]+')');
+	     $('#sliderBg2').css('background-image','url('+backgroundArray[1]+')');
 	     },
 		error: function(){
 			console.log('error loading');

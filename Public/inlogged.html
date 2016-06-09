@@ -8,10 +8,67 @@
     background-color:black;
     color: white;
   }
-   /* .whiteFrame{
-      border: 3px solid white;
-      margin: 150px;
-    }*/
+
+
+    .header{
+      height: 20px;
+      width: 100%;
+      color: white;
+      position:absolute;
+      z-index: 99;
+    }
+    .menuLogo{
+      margin-left: 10px;
+    }
+    .menuBtn{
+      float:right;
+      margin-right: 20px;
+    }
+    #settingsDiv{
+      height: 30vh;
+      color: white;
+      padding-top: 50px;
+
+    }
+    #slider{
+      height: 50vh;
+      z-index: 999;
+
+    }
+    input[type=checkbox] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+   /* For mobile, it's typically better to position checkbox on top of clickable
+      area and turn opacity to 0 instead. */
+}
+input[type=checkbox]:checked + label {
+  color: black;
+  background-color: white;
+
+  font-style: normal;
+} 
+.checkboxLabel{
+  padding: 5px;
+  border: 3px solid white;
+  display: inline-block;
+}
+.settingsBtn{
+  width: 100%;
+      background-color: white;
+    border: none;
+    color: black;
+    margin-top: 3px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+    .whiteFrame{
+      color: white;
+    }
     .whiteFrame div{
       width: 100%;
       height: 100%;
@@ -35,40 +92,32 @@
       float:right;
       margin-right: 20px;
     }
-    #settingsDiv{
-      height: 30vh;
-      color: white;
-      padding-top: 50px;
-
-    }
-    #slider{
-      height: 50vh;
-    }
-        .profileContent{
-      padding: 10% 80% 10% 10%;
+    .profileContent{
+      padding: 20% 10% 80% 10%;
 
     }    
     .profileContentInner{
 
       border: 3px solid white;
     }
-input[type=checkbox] {
-   position: absolute;
-   top: -9999px;
-   left: -9999px;
-   /* For mobile, it's typically better to position checkbox on top of clickable
-      area and turn opacity to 0 instead. */
-}
-input[type=checkbox]:checked + label {
-  color: black;
-  background-color: white;
+    #sliderBg1{
+      position: absolute;
+      width: 100%;
+      height: 50vh;
 
-  font-style: normal;
-} 
-.checkboxLabel{
-  padding: 20px;
-  border: 3px solid white;
-}
+    }
+    #sliderBg2{
+      position: absolute;
+      width: 100%;
+      height: 50vh;
+      opacity: 0;
+    }    
+    #sliderBg3{
+      position: absolute;
+      width: 100%;
+      height: 50vh;
+      opacity: 0;
+    }
 
   </style>
   </head>
@@ -83,32 +132,32 @@ input[type=checkbox]:checked + label {
       <input type="checkbox" name="ekonomi" id="checkbox-ekonomi"> <label class="checkboxLabel" for="checkbox-ekonomi">Ekonomi</label>
       <input type="checkbox" name="frontend" id="checkbox-frontend"> <label class="checkboxLabel" for="checkbox-frontend">Front-End</label>
       <input type="checkbox" name="backend" id="checkbox-backend"> <label class="checkboxLabel" for="checkbox-backend">Back-End</label>
-      <input type="submit" name="" value="Hitta mer">
+      <input type="submit" name="" value="Hitta mer" class="settingsBtn">
   </form>
 
 </div>
   <h2>Senaste:</h2>
-  <div id="slider">
-   <div class="whiteFrame">
-    <div style="background-color:#FFCCCC" id="slideItem0">your content1</div>
-</div>
-     <div class="whiteFrame">
-    <div style="background-color:#FF6666" id="slideItem1">your content2</div>
-</div>
-     <div class="whiteFrame">
-    <div style="background-color:#FF0000" id="slideItem2">your content3</div>
-</div>
-     <div class="whiteFrame">
-    <div style="background-color:#990000" id="slideItem3">your content3</div>
-</div>
-     <div class="whiteFrame">
-    <div style="background-color:#660000" id="slideItem4">your content3</div>
-</div>
-     <div class="whiteFrame">
-    <div style="background-color:#330000" id="slideItem5">your content3</div>
-    </div>
+  <div id="sliderBg1">
   </div>
-  <button class="js-add-slide">hej</button>
+  <div id="sliderBg2">
+  </div>
+  <div id="sliderBg3">
+  </div>
+    <div id="slider">
+
+      <div  id="slideItem0">your content1</div>
+
+      <div id="slideItem1">your content2</div>
+
+      <div id="slideItem2">your content3</div>
+
+      <div id="slideItem3">your content3</div>
+
+      <div id="slideItem4">your content3</div>
+
+      <div id="slideItem5">your content3</div>
+
+    </div>
 
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

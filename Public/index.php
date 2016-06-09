@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("DB.class.php");
+//require_once("DB.class.php");
 require_once("user.class.php");
 require_once("sql.class.php");
 error_reporting(0);
