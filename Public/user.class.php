@@ -1,6 +1,7 @@
 <?php
 class User{
 
+
 //Returnerar array med permissions för varje metod. TRUE innebär att en måste vara inloggad för att få anropa den metoden
 	public static function check(){
 
@@ -36,17 +37,27 @@ class User{
 
 //Hanterar inloggning
 	public static function login(){
-		
 		if(isset($_POST['username'])){
-			$mysqli = DB::getInstance();
-			$usernameClean = $mysqli->real_escape_string($_POST['username']);
-			$passwordClean = $mysqli->real_escape_string($_POST['password']);
+			$curl = new Curl();
+			$curl->post('http://www.therewillbecode.se/slick2/?/auth/checkuser/',[
 
-			$password = crypt($passwordClean,'$2a$'.sha1($usernameClean));
-			$user = Sql::logIn($usernameClean, $password);
+				'username' => $_POST['username'],
+				'password' => $_POST['password']
+
+				]);
+			$response = json_decode($curl->response, true);
+			$user = $response[0];
+			/*$mysqli = DB::getInstance();
+			$usernameClean = $mysqli->real_escape_string($_POST['username']);
+			$passwordClean = $mysqli->real_escape_string($_POST['password']);*/
+
+			// $password = crypt($passwordClean,'$2a$'.sha1($usernameClean));
+			// $user = Sql::logIn($usernameClean, $password);
 //Om inloggning lyckas sparas user id och role in i session
-			if($user['id']){
+			if($user['id'] && $user['token']){
+
 				$_SESSION['user']['id'] = $user['id'];
+				$_SESSION['user']['token'] = $user['token'];
 				return ['redirect' => "inlogged.html"];
 
 				//return ['redirect' => "single.php?id={$user['id']}"];
