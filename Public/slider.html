@@ -24,7 +24,7 @@
       width: 100%;
       color: white;
       position:absolute;
-      z-index: 99;
+      z-index: 9999999;
     }
     .menuLogo{
       margin-left: 10px;
@@ -74,9 +74,14 @@
   </style>
   </head>
   <body>
+
 <header class="header">
     <span class="menuLogo">logga</span>
-    <span class="menuBtn"><a href="">menu</a></span>
+
+    <span class="menuBtn"><a href="">menu</a></span>      
+      <form class="" method="post" action="index.php">
+      <button type='submit' class="" name='killSession' value='Logga ut'>Log out</button>
+  </form>
 </header>
 
   <div id="sliderBg1">

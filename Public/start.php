@@ -129,6 +129,9 @@ input[type=checkbox]:checked + label {
 <header class="header">
   <span class="menuLogo">logga</span>
   <span class="menuBtn"><a href="">menu</a></span>
+  <form class="" method="post" action="index.php">
+      <button type='submit' class="" name='killSession' value='Logga ut'>Log out</button>
+  </form>
 </header>
 <?php  
   $categoryArray = ['it', 'ekonomi', 'frontend', 'backend'];
