@@ -25,29 +25,32 @@ $( document ).ready(function(){getProfilesStart(theID);});
 
 $('#slider').on('swipe', function(event, slick, direction){
 
-var currentSlider = $('#slider').get(0).slick.getCurrent();
-var slideCount = $("#slider").slick("getSlick").slideCount;
+	var currentSlider = $('#slider').get(0).slick.getCurrent();
+	var slideCount = $("#slider").slick("getSlick").slideCount;
 
 
-console.log("currentSlider: "+currentSlider);
-var	currentSlider1 = currentSlider+1;
-console.log(currentSlider1);
-// test();
+	console.log("currentSlider: "+currentSlider);
+	var	currentSlider1 = currentSlider+1;
+	console.log(currentSlider1);
+	// test();
 	if(direction == "left"){
-		if(currentBg == 1){
-			$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
-
-			currentBg++;
-		}else if(currentBg == 2){
-			$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
-
-			currentBg++;
-		}else{
-			$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
-
-			currentBg=1;
-		}
-	   
+	   $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
+ 		if(currentBg == 1){
+ 			$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg1').css('opacity', '1');
+ 			$('#sliderBg3').css('opacity', '0');
+ 			currentBg++;
+ 		}else if(currentBg == 2){
+ 			$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg2').css('opacity', '1');
+ 		$('#sliderBg1').css('opacity', '0');
+ 			currentBg++;
+ 		}else{
+ 		$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg3').css('opacity', '1');
+ 			$('#sliderBg2').css('opacity', '0');
+ 			currentBg=1;
+ 		}
 
 		console.log(backgroundArray);
 
@@ -70,12 +73,18 @@ console.log(currentSlider1);
 
 
 function getNextProfile(id){
-console.log('get profilepictures');
+console.log("id");
+console.log(id);
+console.log("token");
+console.log(token);
+console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token);
+
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: "http://www.therewillbecode.se/slick2/?/persons/3/loadnextprofile/2&token="+token,
-	     success: function(data){     
+	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token,
+	     success: function(data){  
+console.log("lul2");   
 	     $.each(data, function(i, item){
 		  $('#slider').slick('slickAdd','<div id="slideItem'+slideindex+'"></div>');
 	     	
@@ -103,7 +112,7 @@ function getProfilesStart(id){
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: "http://www.therewillbecode.se/slick2/?/persons/3/loadnextprofile/2&token="+token,
+	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/6&token="+token,
 	     success: function(data){     
 	     $.each(data, function(i, item){
 
@@ -126,6 +135,6 @@ function getProfilesStart(id){
 }
 
 function errorHndl(request, status, error) {
-        alert(request.responseText);
-        console.log(request.responseText);
-		}
+    alert(request.responseText);
+    console.log(request.responseText);
+}
