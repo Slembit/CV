@@ -70,11 +70,11 @@ console.log(currentSlider1);
 
 
 function getNextProfile(id){
-
+console.log('get profilepictures');
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token+"/",
+	     url: "http://www.therewillbecode.se/slick2/?/persons/3/loadnextprofile/2&token="+token,
 	     success: function(data){     
 	     $.each(data, function(i, item){
 		  $('#slider').slick('slickAdd','<div id="slideItem'+slideindex+'"></div>');
@@ -90,9 +90,8 @@ function getNextProfile(id){
 
 			});
 	     },
-		error: function(){
-			console.log('error loading');
-		}
+
+	      error: errorHndl
  	});
 }
 
@@ -100,10 +99,11 @@ function getNextProfile(id){
 
 function getProfilesStart(id){
 	console.log(token);
+	console.log('get profilepictures');
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: "http://www.therewillbecode.se/slick2/?/persons/4/loadnextprofile/6&token=1b7d71469d49c772f96bbb50b750eca918d9e484",
+	     url: "http://www.therewillbecode.se/slick2/?/persons/3/loadnextprofile/2&token="+token,
 	     success: function(data){     
 	     $.each(data, function(i, item){
 
@@ -121,8 +121,11 @@ function getProfilesStart(id){
 	     $('#sliderBg1').css('background-image','url('+backgroundArray[0]+')');
 	     $('#sliderBg2').css('background-image','url('+backgroundArray[1]+')');
 	     },
-		error: function(){
-			console.log('error loading');
-		}
+		 error: errorHndl
  	});
 }
+
+function errorHndl(request, status, error) {
+        alert(request.responseText);
+        console.log(request.responseText);
+		}
