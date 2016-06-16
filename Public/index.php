@@ -11,7 +11,6 @@ error_reporting(0);
 if(isset($_POST['killSession'])){
 	session_unset();
 }
-// var_dump($_POST);
 
 
 //anropar getUrlParts och skickar in url. url_parts blir en array med uppstyckad url. 
@@ -26,11 +25,11 @@ if($url_parts!= null){
 //skickar in class och anropar dess statiska metod.
 	require_once($class.".class.php"); 
 
-	$access = false;
+	$access = true;
 
     if($class != 'sql'){
        // $_permissions = $class::check();
-        if(/*$_permissions[$method] == TRUE && */$_SESSION['user']){
+        if(/*$_permissions[$method] == TRUE && */$_SESSION['user']['id']){
             $access = TRUE;
         }
        /* elseif($_permissions[$method] == FALSE){

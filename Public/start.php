@@ -103,21 +103,24 @@ input[type=checkbox]:checked + label {
     }
     #sliderBg1{
       position: absolute;
-      width: 100%;
+      width: 30%;
       height: 50vh;
+
 
     }
     #sliderBg2{
       position: absolute;
-      width: 100%;
+      width: 30%;
       height: 50vh;
       opacity: 0;
+      left:30%;
     }    
     #sliderBg3{
       position: absolute;
-      width: 100%;
+      width: 30%;
       height: 50vh;
       opacity: 0;
+      left:60%;
     }
 
   </style>
@@ -133,7 +136,7 @@ input[type=checkbox]:checked + label {
 <div id="settingsDiv">
   <form action="slider.html" method="post">
     <?php foreach ($categoryArray as $category) {?>
-      <input type="checkbox" name="IT" id="checkbox-<?php echo $category?>"> <label class="checkboxLabel" for="checkbox-<?php echo $category?>"><?php echo $category?></label>
+      <input type="checkbox" name="<?php echo $category?>" id="checkbox-<?php echo $category?>"> <label class="checkboxLabel" for="checkbox-<?php echo $category?>"><?php echo $category?></label>
    <?php  } ?>
    <input type="submit" name="" value="Hitta mer" class="settingsBtn">
      <!-- <input type="checkbox" name="IT" id="checkbox-it"> <label class="checkboxLabel" for="checkbox-it">IT</label>

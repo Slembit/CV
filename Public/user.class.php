@@ -47,8 +47,8 @@ class User{
 				]);
 
 
-			$response = json_decode($curl->response, true);		
-			$user = $response[0];
+				$response = json_decode($curl->response, true);		
+				$user = $response[0];
 
 
 
@@ -56,21 +56,21 @@ class User{
 			//$mysqli = DB::getInstance();
 
 			// $user = Sql::logIn($usernameClean, $password);
-//Om inloggning lyckas sparas user id och role in i session
-			if($user['id'] && $user['token']){
+			//Om inloggning lyckas sparas user id och role in i session
+				if($user['id'] && $user['token']){
 
-				$_SESSION['user']['id'] = $user['id'];
-				$_SESSION['user']['token'] = $user['token'];
-				setcookie("token", $_SESSION['user']['token']);
+					$_SESSION['user']['id'] = $user['id'];
+					$_SESSION['user']['token'] = $user['token'];
+					setcookie("token", $_SESSION['user']['token']);
 
-				return ['redirect' => "inlogged.html"];
+					return ['redirect' => "start.php"];
 
-				//return ['redirect' => "single.php?id={$user['id']}"];
-				
+					//return ['redirect' => "single.php?id={$user['id']}"];
+					
+				}
+
 		}
 
 	}
-
-}
 
 }
