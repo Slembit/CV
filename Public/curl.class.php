@@ -58,6 +58,7 @@ class Curl
 
     public function post($url, $data = array())
     {
+        var_dump($url, $data);
         $this->setopt(CURLOPT_URL, $url);
         $this->setopt(CURLOPT_POST, true);
        if (is_array($data) || is_object($data))
@@ -209,7 +210,7 @@ class Curl
         $this->curl = curl_init();
         $this->setUserAgent(self::USER_AGENT);
         $this->setopt(CURLINFO_HEADER_OUT, true);
-        $this->setopt(CURLOPT_HEADER, true);
+        $this->setopt(CURLOPT_HEADER, false);
         $this->setopt(CURLOPT_RETURNTRANSFER, true);
     }
 }

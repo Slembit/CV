@@ -45,25 +45,27 @@ class User{
 				'password' => $_POST['password']
 
 				]);
-			$response = json_decode($curl->response, true);
-			$user = $response[0];
-			/*$mysqli = DB::getInstance();
-			$usernameClean = $mysqli->real_escape_string($_POST['username']);
-			$passwordClean = $mysqli->real_escape_string($_POST['password']);*/
 
-			// $password = crypt($passwordClean,'$2a$'.sha1($usernameClean));
+			$response = json_decode($curl->response, true);		
+			$user = $response[0];
+
+
+
+			//$mysqli = DB::getInstance();
+
 			// $user = Sql::logIn($usernameClean, $password);
 //Om inloggning lyckas sparas user id och role in i session
 			if($user['id'] && $user['token']){
 
 				$_SESSION['user']['id'] = $user['id'];
 				$_SESSION['user']['token'] = $user['token'];
+				setcookie("token", $_SESSION['user']['token']);
+
 				return ['redirect' => "inlogged.html"];
 
 				//return ['redirect' => "single.php?id={$user['id']}"];
 				
 		}
-		return ['redirect' => "inlogged.html"];
 	}
 
 }
