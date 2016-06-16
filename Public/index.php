@@ -3,14 +3,17 @@ session_start();
 //require_once("DB.class.php");
 require_once("user.class.php");
 require_once("sql.class.php");
-require 'curl.class.php';
+require_once('curl.class.php');
+
 
 error_reporting(0);
 
 if(isset($_POST['killSession'])){
 	session_unset();
 }
-var_dump($_POST);
+// var_dump($_POST);
+
+
 //anropar getUrlParts och skickar in url. url_parts blir en array med uppstyckad url. 
 $url_parts = getUrlParts($_GET); 
 
