@@ -26,17 +26,17 @@ if($url_parts!= null){
 //skickar in class och anropar dess statiska metod.
 	require_once($class.".class.php"); 
 
-	$access = TRUE;
-/*
+	$access = false;
+
     if($class != 'sql'){
-        $_permissions = $class::check();
-        if($_permissions[$method] == TRUE && $_SESSION['user']){
+       // $_permissions = $class::check();
+        if(/*$_permissions[$method] == TRUE && */$_SESSION['user']){
             $access = TRUE;
         }
-        elseif($_permissions[$method] == FALSE){
+       /* elseif($_permissions[$method] == FALSE){
             $access = TRUE;
-        }
-    }*/
+        }*/
+    }
 
 	if($access == TRUE){
 
