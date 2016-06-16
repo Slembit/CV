@@ -45,8 +45,11 @@ class User{
 				'password' => $_POST['password']
 
 				]);
+			//var_dump($curl->response);
+
 			$response = json_decode($curl->response, true);
 			$user = $response[0];
+
 			/*$mysqli = DB::getInstance();
 			$usernameClean = $mysqli->real_escape_string($_POST['username']);
 			$passwordClean = $mysqli->real_escape_string($_POST['password']);*/
@@ -63,7 +66,7 @@ class User{
 				//return ['redirect' => "single.php?id={$user['id']}"];
 				
 		}
-		return ['redirect' => "inlogged.html"];
+		//return ['redirect' => "inlogged.html"];
 	}
 
 }
