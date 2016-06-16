@@ -1,3 +1,16 @@
+<?php
+require_once("user.class.php");
+session_start();
+
+// print_r($_SESSION['user']['token']);
+
+$User = new User;
+
+
+$allSkills = $User->skills($_SESSION['user']['token']);
+
+?>
+
 <html>
   <head>
   <title>My Now Amazing Webpage</title>
@@ -138,9 +151,11 @@ input[type=checkbox]:checked + label {
 ?>
 <div id="settingsDiv">
   <form action="slider.html" method="post">
-    <?php foreach ($categoryArray as $category) {?>
-      <input type="checkbox" name="<?php echo $category?>" id="checkbox-<?php echo $category?>"> <label class="checkboxLabel" for="checkbox-<?php echo $category?>"><?php echo $category?></label>
-   <?php  } ?>
+    <?php foreach ($allSkills as $index ) {
+  foreach ($index as $skill => $value) {?>
+      <input type="checkbox" name="<?php echo $value?>" id="checkbox-<?php echo $value?>"> <label class="checkboxLabel" for="checkbox-<?php echo $value?>"><?php echo $value?></label>
+   <?php    }
+} ?>
    <input type="submit" name="" value="Hitta mer" class="settingsBtn">
      <!-- <input type="checkbox" name="IT" id="checkbox-it"> <label class="checkboxLabel" for="checkbox-it">IT</label>
       <input type="checkbox" name="ekonomi" id="checkbox-ekonomi"> <label class="checkboxLabel" for="checkbox-ekonomi">Ekonomi</label>

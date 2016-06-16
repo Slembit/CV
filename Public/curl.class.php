@@ -58,7 +58,7 @@ class Curl
 
     public function post($url, $data = array())
     {
-        var_dump($url, $data);
+        //var_dump($url, $data);
         $this->setopt(CURLOPT_URL, $url);
         $this->setopt(CURLOPT_POST, true);
        if (is_array($data) || is_object($data))
