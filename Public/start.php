@@ -1,15 +1,29 @@
+
 <?php  
+require_once("user.class.php");
   require_once("header.html"); 
 session_start();
 
 
-  $categoryArray = ['itt', 'ekotnomi', 'frovntend', 'backend', 'ekono2mi', 'fron2end', 'backe3nd', 'eko4nomi', 'fro5ntend', 'ba6ckend', 'ekonyomi', 'frontennd'];
+
+
+// print_r($_SESSION['user']['token']);
+
+$User = new User;
+
+
+$allSkills = $User->skills($_SESSION['user']['token']);
+
 ?>
+
 <div id="settingsDiv">
-  <form action="slider.php" method="post">
-    <?php foreach ($categoryArray as $category) {?>
-      <input type="checkbox" name="<?php echo $category?>" id="checkbox-<?php echo $category?>"> <label class="checkboxLabel" for="checkbox-<?php echo $category?>"><?php echo $category?></label>
-   <?php  } ?>
+  <form action="slider.html" method="post">
+    <?php foreach ($allSkills as $index ) {
+  foreach ($index as $skill => $value) {?>
+      <input type="checkbox" name="<?php echo $value?>" id="checkbox-<?php echo $value?>"> <label class="checkboxLabel" for="checkbox-<?php echo $value?>"><?php echo $value?></label>
+   <?php    }
+} ?>
+
    <input type="submit" name="" value="Hitta mer" class="settingsBtn">
      <!-- <input type="checkbox" name="IT" id="checkbox-it"> <label class="checkboxLabel" for="checkbox-it">IT</label>
       <input type="checkbox" name="ekonomi" id="checkbox-ekonomi"> <label class="checkboxLabel" for="checkbox-ekonomi">Ekonomi</label>

@@ -15,7 +15,6 @@ if(isset($_POST['killSession'])){
 	session_unset();
 	setcookie("token", "", time() - 3600);
 }
-//var_dump($_SESSION);
 
 //anropar getUrlParts och skickar in url. url_parts blir en array med uppstyckad url. 
 $url_parts = getUrlParts($_GET); 
@@ -70,8 +69,6 @@ else{
 		require_once('login.html');
 	
 }
-
-
 
 function getUrlParts($get){
 	$get_params = array_keys($get);//plockar key värden ur get-arrayen
