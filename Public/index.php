@@ -1,17 +1,21 @@
 <?php
 session_start();
+
+
 //require_once("DB.class.php");
 require_once("user.class.php");
 require_once("sql.class.php");
 require_once('curl.class.php');
+ 
 
 
 error_reporting(0);
 
 if(isset($_POST['killSession'])){
 	session_unset();
+	setcookie("token", "", time() - 3600);
 }
-var_dump($_SESSION['user']);
+//var_dump($_SESSION);
 
 //anropar getUrlParts och skickar in url. url_parts blir en array med uppstyckad url. 
 $url_parts = getUrlParts($_GET); 
@@ -46,12 +50,12 @@ if($url_parts!= null){
 			$template = 'myList.html';
 
 		}else if($method ==  'createUser'){
-			echo "hej";
+			echo "nejejejejeje";
 		}
 
 	}	//ends access if
 	else{
-
+		echo "yeyy";
 		require_once('login.html');
 	}
 
@@ -66,9 +70,7 @@ else{
 		require_once('login.html');
 	
 }
-/*
-$twig = startTwig();
-echo $twig->render($template, $data);*/
+
 
 
 function getUrlParts($get){

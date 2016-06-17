@@ -44,14 +44,8 @@ class User{
 				'password' => $_POST['password']
 
 				]);
-
-
-				$response = json_decode($curl->response, true);		
-				$user = $response[0];
-
-
-
-
+			$response = json_decode($curl->response, true);		
+			$user = $response[0];
 			//$mysqli = DB::getInstance();
 
 			// $user = Sql::logIn($usernameClean, $password);
@@ -60,12 +54,15 @@ class User{
 
 					$_SESSION['user']['id'] = $user['id'];
 					$_SESSION['user']['token'] = $user['token'];
-					setcookie("token", $_SESSION['user']['token']);
+					setcookie("token", $_SESSION['user']['token'], time()+3600);
 
 					return ['redirect' => "start.php"];
 
 					//return ['redirect' => "single.php?id={$user['id']}"];
 					
+				}else{
+					return ['redirect' => "index.php"];
+
 				}
 
 		}

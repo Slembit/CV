@@ -20,80 +20,100 @@ var backgroundArray =[];
 var currentBg=2;
 
 
-///////gammal kod:
+
 $( document ).ready(function(){getProfilesStart(theID);});
 
 $('#slider').on('swipe', function(event, slick, direction){
 
 	var currentSlider = $('#slider').get(0).slick.getCurrent();
 	var slideCount = $("#slider").slick("getSlick").slideCount;
+	console.log(currentSlider);
+	console.log(slideCount);
 
-
-	//console.log("currentSlider: "+currentSlider);
-
-	//console.log(currentSlider1);
-	// test();
 	if(direction == "left"){
-	console.log('currentBg: '+currentBg);
+		if(currentSlider == (slideCount-1)){
+			console.log("SISTA");
 
-	/*if(currentBg==3){
- 			currentBg=1;
+			if(currentBg == 1){
+	 			//$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg1').css('opacity', '1');
+	 			$('#sliderBg3').css('opacity', '0');
+	 			// currentBg--;
+	 		}else if(currentBg == 2){
+	 			//$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg2').css('opacity', '1');
+	 			$('#sliderBg1').css('opacity', '0');
+	 			// currentBg--;
+	 		}else{
+	 			//$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg3').css('opacity', '1');
+	 			$('#sliderBg2').css('opacity', '0');
+	 			// currentBg=1;
+	 		}
 
- 		}else{
- 			currentBg++;
- 		}*/
-
-			var	currentSlider1 = currentSlider+1;
-	   $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
- 		if(currentBg == 1){
- 			$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
- 			$('#sliderBg1').css('opacity', '1');
- 			$('#sliderBg3').css('opacity', '0');
- 			currentBg++;
- 		}else if(currentBg == 2){
- 			$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
- 			$('#sliderBg2').css('opacity', '1');
- 			$('#sliderBg1').css('opacity', '0');
- 			currentBg++;
- 		}else{
- 		$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
- 			$('#sliderBg3').css('opacity', '1');
- 			$('#sliderBg2').css('opacity', '0');
- 			currentBg=1;
- 		}
-
-		//console.log(backgroundArray);
-
-		if(currentSlider+7 >= slideCount){
-			getNextProfile(theID);
 		}else{
-			console.log("lul");
+			//console.log('currentBg: '+currentBg);
+
+				var	currentSlider1 = currentSlider+1;
+	 		if(currentBg == 1){
+	 			$('#sliderBg2').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg1').css('opacity', '1');
+	 			$('#sliderBg3').css('opacity', '0');
+	 			currentBg++;
+	 		}else if(currentBg == 2){
+	 			$('#sliderBg3').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg2').css('opacity', '1');
+	 			$('#sliderBg1').css('opacity', '0');
+	 			currentBg++;
+	 		}else{
+	 			$('#sliderBg1').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
+	 			$('#sliderBg3').css('opacity', '1');
+	 			$('#sliderBg2').css('opacity', '0');
+	 			currentBg=1;
+	 		}
+
+			if(currentSlider+7 >= slideCount){
+				getNextProfile(theID);
+			}else{
+				console.log("lul");
+			}
 		}
-	}else if(direction == "right"){
-	
+	}
+
+
+
+
+	else if(direction == "right"){
+	if(currentSlider == 0){
+		console.log("Första");
+ 			$('#sliderBg1').css('opacity', '1');
+ 			$('#sliderBg2').css('opacity', '0');
+ 			$('#sliderBg3').css('opacity', '0');
+ 			currentBg=2;
+	}else{
 	var	currentSlider1 = currentSlider-1;
 	console.log('currentBgBACK: '+currentBg);
 		if(currentBg == 1){
  			currentBg=3;
 
-		  // $('#sliderBg').css('background-image','url('+backgroundArray[currentSlider]+')');
+
 		}else{
  			currentBg--;
 		}
  		if(currentBg == 2){
- 			$('#sliderBg3').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg3').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
  			$('#sliderBg1').css('opacity', '1');
  			$('#sliderBg2').css('opacity', '0');
  			$('#sliderBg3').css('opacity', '0');
  			//currentBg--;
  		}else if(currentBg == 3){
- 			$('#sliderBg1').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg1').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
  			$('#sliderBg2').css('opacity', '1');
  			$('#sliderBg3').css('opacity', '0');
  			$('#sliderBg1').css('opacity', '0');
  			//currentBg--;
  		}else if(currentBg == 1){
- 			$('#sliderBg2').css('background-image','url('+backgroundArray[currentSlider1]+')');
+ 			$('#sliderBg2').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[currentSlider1]+')');
  			$('#sliderBg3').css('opacity', '1');
  			$('#sliderBg1').css('opacity', '0');
  			$('#sliderBg2').css('opacity', '0');
@@ -108,7 +128,7 @@ $('#slider').on('swipe', function(event, slick, direction){
 			//console.log("lul");
 		}
 	
-	   	
+	   }	
 
 	}	
 
@@ -173,12 +193,32 @@ function getProfilesStart(id){
 
 
 			});
-	     $('#sliderBg1').css('background-image','url('+backgroundArray[0]+')');
-	     $('#sliderBg2').css('background-image','url('+backgroundArray[1]+')');
+	     $('#sliderBg1').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[0]+')');
+	     $('#sliderBg2').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[1]+')');
 	     },
 		 error: errorHndl
  	});
 }
+
+function getSingle(id){
+
+	console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadprofile/"+token)
+ 		$.ajax({ 
+ 	     type: "GET",
+ 	     dataType: "json",
+ 	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadprofile/&token="+token,
+ 	     success: function(data){        
+ 	    	$.each(data, function(i, item){
+ 	    		theID = item.id;
+ 	    		$( "#singleCv" ).html(item.id+" "+item.firstname+" "+item.lastname).css("background-image","linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("+item.profilepicture+")");
+ 			});
+ 	     },
+ 		error: function(){
+ 			console.log('error loading');
+ 		}
+ 	});
+ }
+
 
 function errorHndl(request, status, error) {
     alert(request.responseText);

@@ -1,143 +1,12 @@
-<html>
-  <head>
-  <title>My Now Amazing Webpage</title>
-  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-  <style type="text/css">
-  body{
-    background-color:black;
-    color: white;
-  }
-
-
-    .header{
-      height: 20px;
-      width: 100%;
-      color: white;
-      position:absolute;
-      z-index: 99;
-    }
-    .menuLogo{
-      margin-left: 10px;
-    }
-    .menuBtn{
-      float:right;
-      margin-right: 20px;
-    }
-    #settingsDiv{
-      height: 30vh;
-      color: white;
-      padding-top: 50px;
-
-    }
-    #slider{
-      height: 50vh;
-      z-index: 999;
-
-    }
-    input[type=checkbox] {
-   position: absolute;
-   top: -9999px;
-   left: -9999px;
-   /* For mobile, it's typically better to position checkbox on top of clickable
-      area and turn opacity to 0 instead. */
-}
-input[type=checkbox]:checked + label {
-  color: black;
-  background-color: white;
-
-  font-style: normal;
-} 
-.checkboxLabel{
-  padding: 5px;
-  border: 3px solid white;
-  display: inline-block;
-  text-transform: uppercase;
-}
-.settingsBtn{
-  width: 100%;
-      background-color: white;
-    border: none;
-    color: black;
-    margin-top: 3px;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-    .whiteFrame{
-      color: white;
-    }
-    .whiteFrame div{
-      width: 100%;
-      height: 100%;
-      text-align: center;
-        -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-    }
-    .header{
-      height: 20px;
-      width: 100%;
-      color: white;
-      position:absolute;
-      z-index: 99;
-    }
-    .menuLogo{
-      margin-left: 10px;
-    }
-    .menuBtn{
-      float:right;
-      margin-right: 20px;
-    }
-    .profileContent{
-      padding: 20% 10% 80% 10%;
-
-    }    
-    .profileContentInner{
-
-      border: 3px solid white;
-    }
-    #sliderBg1{
-      position: absolute;
-      width: 30%;
-      height: 50vh;
-
-
-    }
-    #sliderBg2{
-      position: absolute;
-      width: 30%;
-      height: 50vh;
-      opacity: 0;
-      left:30%;
-    }    
-    #sliderBg3{
-      position: absolute;
-      width: 30%;
-      height: 50vh;
-      opacity: 0;
-      left:60%;
-    }
-
-  </style>
-  </head>
-  <body>
-<header class="header">
-  <span class="menuLogo">logga</span>
-  <span class="menuBtn"><a href="">menu</a></span>
-  <form class="" method="post" action="index.php">
-      <button type='submit' class="" name='killSession' value='Logga ut'>Log out</button>
-  </form>
-</header>
 <?php  
-  $categoryArray = ['it', 'ekonomi', 'frontend', 'backend'];
+  require_once("header.html"); 
+session_start();
+
+
+  $categoryArray = ['itt', 'ekotnomi', 'frovntend', 'backend', 'ekono2mi', 'fron2end', 'backe3nd', 'eko4nomi', 'fro5ntend', 'ba6ckend', 'ekonyomi', 'frontennd'];
 ?>
 <div id="settingsDiv">
-  <form action="slider.html" method="post">
+  <form action="slider.php" method="post">
     <?php foreach ($categoryArray as $category) {?>
       <input type="checkbox" name="<?php echo $category?>" id="checkbox-<?php echo $category?>"> <label class="checkboxLabel" for="checkbox-<?php echo $category?>"><?php echo $category?></label>
    <?php  } ?>
@@ -150,14 +19,15 @@ input[type=checkbox]:checked + label {
   </form>
 
 </div>
+
   <h2>Senaste:</h2>
-  <div id="sliderBg1">
+  <div id="sliderBg1" class="startSliderBg">
   </div>
-  <div id="sliderBg2">
+  <div id="sliderBg2" class="startSliderBg">
   </div>
-  <div id="sliderBg3">
+  <div id="sliderBg3" class="startSliderBg">
   </div>
-    <div id="slider">
+    <div id="slider" class="sliderStart">
 
       <div  id="slideItem0">your content1</div>
 
