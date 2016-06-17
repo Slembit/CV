@@ -136,42 +136,37 @@ input[type=checkbox]:checked + label {
       left:60%;
     }
 
-  </style>
-  </head>
-  <body>
-<header class="header">
-  <span class="menuLogo">logga</span>
-  <span class="menuBtn"><a href="">menu</a></span>
-  <form class="" method="post" action="index.php">
-      <button type='submit' class="" name='killSession' value='Logga ut'>Log out</button>
-  </form>
-</header>
-<?php  
-  $categoryArray = ['it', 'ekonomi', 'frontend', 'backend'];
-?>
-<div id="settingsDiv">
-  <form action="slider.html" method="post">
-    <?php foreach ($allSkills as $index ) {
-  foreach ($index as $skill => $value) {?>
-      <input type="checkbox" name="<?php echo $value?>" id="checkbox-<?php echo $value?>"> <label class="checkboxLabel" for="checkbox-<?php echo $value?>"><?php echo $value?></label>
-   <?php    }
-} ?>
-   <input type="submit" name="" value="Hitta mer" class="settingsBtn">
+</style>
+</head>
+    <body>
+    <header class="header">
+    <span class="menuLogo">logga</span>
+    <span class="menuBtn"><a href="">menu</a></span>
+    <form class="" method="post" action="index.php">
+        <button type='submit' class="" name='killSession' value='Logga ut'>Log out</button>
+    </form>
+    </header>
+    <div id="settingsDiv">
+    <form action="slider.php" id="skills" method="post">
+    <?php foreach ($allSkills as $skill ) { ?>
+      <input type="checkbox" value="<?php echo $skill['id']?>" id="checkbox-<?php echo $skill['id']?>"> <label class="checkboxLabel" for="checkbox-<?php echo $skill['id']?>"><?php echo $skill['skill']?></label>
+    <?php } ?>
+        <input type="submit" name="" value="Hitta mer" class="settingsBtn">
      <!-- <input type="checkbox" name="IT" id="checkbox-it"> <label class="checkboxLabel" for="checkbox-it">IT</label>
       <input type="checkbox" name="ekonomi" id="checkbox-ekonomi"> <label class="checkboxLabel" for="checkbox-ekonomi">Ekonomi</label>
       <input type="checkbox" name="frontend" id="checkbox-frontend"> <label class="checkboxLabel" for="checkbox-frontend">Front-End</label>
       <input type="checkbox" name="backend" id="checkbox-backend"> <label class="checkboxLabel" for="checkbox-backend">Back-End</label>
       <input type="submit" name="" value="Hitta mer" class="settingsBtn">-->
-  </form>
+    </form>
 
-</div>
-  <h2>Senaste:</h2>
-  <div id="sliderBg1">
-  </div>
-  <div id="sliderBg2">
-  </div>
-  <div id="sliderBg3">
-  </div>
+    </div>
+    <h2>Senaste:</h2>
+    <div id="sliderBg1">
+    </div>
+    <div id="sliderBg2">
+    </div>
+    <div id="sliderBg3">
+    </div>
     <div id="slider">
 
       <div  id="slideItem0">your content1</div>
@@ -188,10 +183,10 @@ input[type=checkbox]:checked + label {
 
     </div>
 
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="slick/slick.min.js"></script>
-  <script type="text/javascript" src="main.js">></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 
-  </body>
+</body>
 </html>
