@@ -18,10 +18,46 @@ var slideItem;
 var slideindex = 0;
 var backgroundArray =[];
 var currentBg=2;
+var userAccess=null;
+// var url = initURL(theID, token, 'init');
+
+
+function initURL(theID, token, test, skillSelection = null){
+
+	if (test === 'init') {
+		url=  "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/6&token="+token;
+		getProfilesStart(url);
+	}else if(test === 'skills'){
+		console.log('skills ifsatsen');
+		url = "http://www.therewillbecode.se/slick2/?/skills/4/sortbyskills/6&token="+token;
+		getProfilesStart(url);
+		
+	}
+}
+
+
+
+	$('#skills').submit(function (e) {
+		var skillSelection = [];
+
+	    $("#skills :checked").each(function(){
+	    	console.log($(this).val());
+	    	skillSelection.push($(this).val());
+
+
+	    });
+	    console.log(skillSelection);
+	    var formId = this.id;
+	    console.log(formId); 
+	    initURL(theID, token, 'skills', skillSelection);
+	    e.preventDefault();
+	});
+
+
 
 
 ///////gammal kod:
-$( document ).ready(function(){getProfilesStart(theID);});
+$( document ).ready(function(){initURL(theID, token, 'init');});
 
 $('#slider').on('swipe', function(event, slick, direction){
 
@@ -150,15 +186,15 @@ console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofi
  	});
 }
 
-
-
-function getProfilesStart(id){
+function getProfilesStart(url){
+	console.log(url);
 	console.log(token);
 	console.log('get profilepictures');
-	$.ajax({ 
+
+	$.ajax({
 	     type: "GET",
 	     dataType: "json",
-	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/6&token="+token,
+	     url: url,
 	     success: function(data){     
 	     $.each(data, function(i, item){
 
@@ -184,3 +220,5 @@ function errorHndl(request, status, error) {
     alert(request.responseText);
     console.log(request.responseText);
 }
+
+
