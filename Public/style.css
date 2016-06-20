@@ -147,7 +147,9 @@ input[type=checkbox]:checked + label {
 .hidden{
   visibility: hidden;
 }
-
+.remove{
+  display: none;
+}
 
 
   #singleCv{
