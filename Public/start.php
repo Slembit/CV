@@ -2,7 +2,7 @@
 require_once("user.class.php");
 require_once("header.html"); 
 session_start();
-// print_r($_SESSION['user']['token']);
+
 
 $User = new User;
 
@@ -22,7 +22,6 @@ $allSkills = $User->skills($_SESSION['user']['token']);
 
 </div>
 
-  <h2>Senaste:</h2>
   <div id="sliderBg1" class="startSliderBg">
   </div>
   <div id="sliderBg2" class="startSliderBg">
@@ -30,7 +29,6 @@ $allSkills = $User->skills($_SESSION['user']['token']);
   <div id="sliderBg3" class="startSliderBg">
   </div>
     <div id="slider" class="sliderStart">
-
       <div  id="slideItem0">your content1</div>
 
       <div id="slideItem1">your content2</div>

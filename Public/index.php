@@ -7,10 +7,9 @@ require_once("user.class.php");
 require_once("sql.class.php");
 require_once('curl.class.php');
  
-
+var_dump($_COOKIE['token']);
 
 error_reporting(0);
-
 if(isset($_POST['killSession'])){
 	session_unset();
 	setcookie("token", "", time() - 3600);
@@ -30,31 +29,21 @@ if($url_parts!= null){
 
 	$access = FALSE;
 
-    if($class != 'sql'){
-       // $_permissions = $class::check();
         if(/*$_permissions[$method] == TRUE && */$_SESSION['user']['id']){
             $access = TRUE;
         }
         elseif($_permissions[$method] == FALSE){
             $access = TRUE;
         }
-    }
-
+    
 	if($access == TRUE){
 
 		$data = $class::$method($url_parts);
 		$data['_session'] = $_SESSION;
 
-		if($method ==  'myList' || $method ==  'getList'){
-			$template = 'myList.html';
-
-		}else if($method ==  'createUser'){
-			echo "nejejejejeje";
-		}
-
-	}	//ends access if
+	}	
 	else{
-		echo "yeyy";
+
 		require_once('login.html');
 	}
 
@@ -65,7 +54,7 @@ if($url_parts!= null){
 }	//ends if url_parts
 
 else{
-	echo "hej";
+
 		require_once('login.html');
 	
 }

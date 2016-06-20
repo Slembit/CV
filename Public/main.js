@@ -55,10 +55,7 @@ function initURL(theID, token, test, skillSelection = null){
 
 
 
-
-
 $( document ).ready(function(){initURL(theID, token, 'init');});
-
 
 $('#slider').on('swipe', function(event, slick, direction){
 
@@ -223,8 +220,9 @@ function getProfilesStart(url){
 	    		theID = item.id;
 	    		backgroundArray.push(item.profilepicture);
 
-	    		$( slideItem ).html("<div class='profileContent'><div class='profileContentInner'><a href='single.php?id="+item.id+"'> "
-	    			+item.firstname+"</a> "+item.lastname+"</div></div>");
+	    		$( slideItem ).html("<div class='profileContent'><div class='profileContentInner'><label class='profileName'><a href='single.php?id="+item.id+"'> "
+	    			+item.firstname+" "+item.lastname+
+	    			"</a> </label><img class='profilePicture' src='https://organicthemes.com/demo/profile/files/2012/12/profile_img.png'><span class='profileSkills'><br><u>SKILLS:</u><ul><li>PHP</li><li>JavaScript</li><li>CSS</li></ul></span><div class='profileShortDesc'><label><u>Description:</u></label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div></div>");
 	    			//.css("background-image","url("+item.profilepicture+")")
 					slideindex++;
 
@@ -247,8 +245,10 @@ function getSingle(id){
  	     success: function(data){        
  	    	$.each(data, function(i, item){
  	    		theID = item.id;
- 	    		$( "#singleCv" ).html(item.id+" "+item.firstname+" "+item.lastname).css("background-image","linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("+item.profilepicture+")");
- 			});
+ 	    		$( "#singleCv" ).html("<div class='profileContent'><div class='profileContentInner'><label class='profileName'><a href='single.php?id="+item.id+"'> "
+	    			+item.firstname+" "+item.lastname+
+	    			"</a> </label><img class='profilePicture' src='https://organicthemes.com/demo/profile/files/2012/12/profile_img.png'><span class='profileSkills'><br><u>SKILLS:</u><ul><li>PHP</li><li>JavaScript</li><li>CSS</li></ul></span><div class='profileShortDesc'><label><u>Description:</u></label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div><span class='menuLogo'><a href=''>Contact</a></span> </div></div>").css("background-image","linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("+item.profilepicture+")");
+	    			});
  	     },
  		error: function(){
  			console.log('error loading');

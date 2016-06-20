@@ -57,6 +57,8 @@ class User{
 					$_SESSION['user']['token'] = $user['token'];
 					setcookie("token", $_SESSION['user']['token'], time()+3600);
 
+					echo '<script type="text/javascript">var logged_in=true;</script>';
+
 					return ['redirect' => "start.php"];
 
 					//return ['redirect' => "single.php?id={$user['id']}"];
