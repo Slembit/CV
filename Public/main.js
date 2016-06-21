@@ -4,6 +4,8 @@ function getCookie(name) {
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
+var token = getCookie('token');
+console.log(token);
 
 $('#slider').slick({
   slidesToShow: 1,
@@ -17,32 +19,18 @@ var slideindex = 0;
 var backgroundArray =[];
 var currentBg=2;
 var userAccess=null;
-var initUrl = null;
-var nextProfileUrl = null;
-var token = getCookie('token');
-console.log(token);
+// var url = initURL(theID, token, 'init');
 
 
-// initURL('init');
+function initURL(theID, token, test, skillSelection = null){
 
-
-function initURL(hasSelection, skillSelection){
-
-
-	if (hasSelection === 'init') {
-		initUrl=  "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/"+6+"&token="+token;
-
-		nextProfileUrl = "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/"+ 1 +"&token="+token;
-		getProfilesStart(initUrl);
-	}else if(hasSelection === 'skills'){
-		var selectionString = "";
-		if (skillSelection){
-		 selectionString = skillSelection.toString();
-}
+	if (test === 'init') {
+		url=  "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/6&token="+token;
+		getProfilesStart(url);
+	}else if(test === 'skills'){
 		console.log('skills ifsatsen');
-		initUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+6+"&token="+token+"&selection="+selectionString;
-		nextProfileUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+1+"&token="+token+"&selection="+selectionString;
-		getProfilesStart(initUrl);
+		url = "http://www.therewillbecode.se/slick2/?/skills/4/sortbyskills/6&token="+token;
+		getProfilesStart(url);
 		
 	}
 }
@@ -51,7 +39,6 @@ function initURL(hasSelection, skillSelection){
 
 	$('#skills').submit(function (e) {
 		var skillSelection = [];
-		var selectionString = "";
 
 	    $("#skills :checked").each(function(){
 	    	console.log($(this).val());
@@ -59,13 +46,11 @@ function initURL(hasSelection, skillSelection){
 
 
 	    });
-	    
-
 	    console.log(skillSelection);
 	    var formId = this.id;
 	    console.log(formId); 
-	    initURL('skills', skillSelection);
-	    // e.preventDefault();
+	    initURL(theID, token, 'skills', skillSelection);
+	    e.preventDefault();
 	});
 
 
@@ -122,7 +107,7 @@ $('#slider').on('swipe', function(event, slick, direction){
 	 		}
 
 			if(currentSlider+7 >= slideCount){
-				getNextProfile(nextProfileUrl);
+				getNextProfile(theID);
 			}else{
 				console.log("lul");
 			}
@@ -172,7 +157,7 @@ $('#slider').on('swipe', function(event, slick, direction){
 		//console.log(backgroundArray);
 
 		if(currentSlider+7 >= slideCount){
-			getNextProfile(nextProfileUrl);
+			getNextProfile(theID);
 		}else{
 			//console.log("lul");
 		}
@@ -187,20 +172,17 @@ $('#slider').on('swipe', function(event, slick, direction){
 
 
 
-function getNextProfile(initUrl){
+function getNextProfile(id){
 /*console.log("id");
 console.log(id);
 console.log("token");
 console.log(token);
 console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token);
 */
-	profilesToLoad = 1;
-	console.log(initUrl);
-	console.log(token);
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: initUrl,
+	     url: "http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token,
 	     success: function(data){  
 //console.log("lul2");   
 	     $.each(data, function(i, item){
@@ -222,15 +204,15 @@ console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofi
  	});
 }
 
-function getProfilesStart(initUrl){
-	console.log(initUrl);
+function getProfilesStart(url){
+	console.log(url);
 	console.log(token);
 	console.log('get profilepictures');
 
 	$.ajax({
 	     type: "GET",
 	     dataType: "json",
-	     url: initUrl,
+	     url: url,
 	     success: function(data){     
 	     $.each(data, function(i, item){
 
