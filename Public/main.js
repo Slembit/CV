@@ -20,10 +20,14 @@ var userAccess=null;
 var initUrl = null;
 var nextProfileUrl = null;
 var token = getCookie('token');
+
 console.log(token);
 
 
-initURL('init');
+if (window.location.href == 'http://192.168.33.10/CV/public/start.php') {
+	initURL('init');
+}
+
 
 
 function initURL(hasSelection, skillSelection){
@@ -40,10 +44,10 @@ function initURL(hasSelection, skillSelection){
 		 selectionString = skillSelection.toString();
 }
 		console.log('skills ifsatsen');
+		// backgroundArray = [];
 		initUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+6+"&token="+token+"&selection="+selectionString;
 		nextProfileUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+1+"&token="+token+"&selection="+selectionString;
 		getProfilesStart(initUrl);
-		
 	}
 }
 
@@ -52,6 +56,7 @@ function initURL(hasSelection, skillSelection){
 	$('#skills').submit(function (e) {
 		var skillSelection = [];
 		var selectionString = "";
+		console.log('sss');
 
 	    $("#skills :checked").each(function(){
 	    	console.log($(this).val());
@@ -64,13 +69,13 @@ function initURL(hasSelection, skillSelection){
 	    var formId = this.id;
 	    console.log(formId); 
 	    initURL('skills', skillSelection);
-	    // e.preventDefault();
+	    e.preventDefault();
 	});
 
 
 
 
-$( document ).ready(function(){initURL(theID, token, 'init');});
+// $( document ).ready(function(){initURL('init');});
 
 
 $('#slider').on('swipe', function(event, slick, direction){
@@ -223,10 +228,10 @@ console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofi
 }
 
 function getProfilesStart(initUrl){
-	console.log(initUrl);
 	console.log(token);
 	console.log('get profilepictures');
-
+	backgroundArray = [];
+	slideindex = 0;
 	$.ajax({
 	     type: "GET",
 	     dataType: "json",
@@ -245,6 +250,7 @@ function getProfilesStart(initUrl){
 
 
 			});
+	     console.log(backgroundArray);
 	     $('#sliderBg1').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[0]+')');
 	     $('#sliderBg2').css('background-image','linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('+backgroundArray[1]+')');
 	     },
@@ -274,7 +280,7 @@ function getSingle(id){
 
 function errorHndl(request, status, error) {
     alert(request.responseText);
-    console.log(request.responseText);
+    console.log(request.responseText, status.responseText, error.responseText);
 }
 
 
