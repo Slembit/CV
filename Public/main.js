@@ -289,6 +289,4 @@ function getSingle(id){
 function errorHndl(request, status, error) {
     alert(request.responseText);
     console.log(request.responseText, status.responseText, error.responseText);
-}
-
 
