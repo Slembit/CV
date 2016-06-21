@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
-	<title></title>
+<title>Registration Form Using jQuery - Demo Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Include CSS File Here -->
+<!-- Include JS File Here -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="test.js"></script>
 </head>
 <body>
-
-	<form class="remove" method="POST" id="createProfile" >
-		<h1>Create Profile</h1>
-		<input type="text" name="firstname"  placeholder="First name">
-		<input type="text" name="lastname "  placeholder="Last name">
-		<input type="text" name="lookingfor"  placeholder="Looking for">
-		<input type="textarea" name="about"  placeholder="About me">
-		<input type="text" name="profilepicture"  placeholder="Profilepicture url">
-		<input type="text" name="skills"  placeholder="Skills">
-		<input type="submit" name="personAddForm">
-	</form>
-	<form class="" method="POST" id="updateProfile">	
-		<h1>Update Profile</h1>
-		<input type="text" name="firstname"  placeholder="First name">
-		<input type="text" name="lastname "  placeholder="Last name">
-		<input type="text" name="lookingfor"  placeholder="Looking for">
-		<input type="textarea" name="about"  placeholder="About me">
-		<input type="text" name="profilepicture"  placeholder="Profilepicture url">
-		<input type="text" name="skills"  placeholder="Skills">
-		<input type="submit" name="personUpdateForm">
-	</form>
-
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="slick/slick.min.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+<div class="container">
+<div class="main">
+<form class="form" method="post" action="#">
+<h2>Create Registration Form Using jQuery</h2>
+<label>Name :</label>
+<input type="text" name="dname" id="name">
+<label>Email :</label>
+<input type="text" name="demail" id="email">
+<label>Password :</label>
+<input type="password" name="password" id="password">
+<label>Confirm Password :</label>
+<input type="password" name="cpassword" id="cpassword">
+<input type="button" name="register" id="register" value="Register">
+</form>
+</div>
 </body>
 </html>

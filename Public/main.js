@@ -18,14 +18,15 @@ var backgroundArray =[];
 var currentBg=2;
 var userAccess=null;
 var initUrl = null;
-var nextProfileUrl = null;
+var nextProfileUrlP1 = null;
+var nextProfileUrlP2 = null;
 var token = getCookie('token');
 
 console.log(token);
 
 
 
-if (window.location.href == 'http://192.168.33.10/cv/Public/start.php') {
+if (window.location.href == 'http://192.168.33.10/CV/public/start.php') {
 	initURL('init');
 }
 
@@ -38,7 +39,8 @@ function initURL(hasSelection, skillSelection){
 	if (hasSelection === 'init') {
 		initUrl=  "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/"+6+"&token="+token;
 
-		nextProfileUrl = "http://www.therewillbecode.se/slick2/?/persons/"+theID+"/loadnextprofile/"+ 1 +"&token="+token;
+		nextProfileUrlP1 = "http://www.therewillbecode.se/slick2/?/persons/";
+		nextProfileUrlP2 = "/loadnextprofile/"+1+"&token="+token;
 		getProfilesStart(initUrl);
 	}else if(hasSelection === 'skills'){
 		var selectionString = "";
@@ -47,11 +49,14 @@ function initURL(hasSelection, skillSelection){
 		}
 		console.log('skills ifsatsen');
 		// backgroundArray = [];
+		theID = 1;
 		initUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+6+"&token="+token+"&selection="+selectionString;
-		nextProfileUrl = "http://www.therewillbecode.se/slick2/?/skills/"+theID+"/sortbyskills/"+1+"&token="+token+"&selection="+selectionString;
+		nextProfileUrlP1 = "http://www.therewillbecode.se/slick2/?/skills/";
+		nextProfileUrlP2 = "/sortbyskills/"+1+"&token="+token+"&selection="+selectionString;
 		getProfilesStart(initUrl);
 	}
 }
+
 
 
 
@@ -132,7 +137,7 @@ $('#slider').on('swipe', function(event, slick, direction){
 	 		}
 
 			if(currentSlider+7 >= slideCount){
-				getNextProfile(nextProfileUrl);
+				getNextProfile(nextProfileUrlP1, nextProfileUrlP2);
 			}else{
 				console.log("lul");
 			}
@@ -182,7 +187,7 @@ $('#slider').on('swipe', function(event, slick, direction){
 		//console.log(backgroundArray);
 
 		if(currentSlider+7 >= slideCount){
-			getNextProfile(nextProfileUrl);
+			getNextProfile(nextProfileUrlP1, nextProfileUrlP2);
 		}else{
 			//console.log("lul");
 		}
@@ -194,23 +199,27 @@ $('#slider').on('swipe', function(event, slick, direction){
 });
 
    		
+function buildUrl(p1,p2,id){
+	return p1+id+p2;
+}
 
 
+function getNextProfile(nextProfileUrlP1, nextProfileUrlP2){
 
-function getNextProfile(initUrl){
+	url = buildUrl(nextProfileUrlP1, nextProfileUrlP2, theID);
+	console.log(url);
 /*console.log("id");
 console.log(id);
 console.log("token");
 console.log(token);
 console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token);
 */
-	profilesToLoad = 1;
 	console.log(initUrl);
 	console.log(token);
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: initUrl,
+	     url: url,
 	     success: function(data){  
 //console.log("lul2");   
 	     $.each(data, function(i, item){
@@ -220,9 +229,10 @@ console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofi
 	    		theID = item.id;
 	    		backgroundArray.push(item.profilepicture);
 
-	    		$( slideItem ).html("<div class='profileContent'><div class='profileContentInner'><a href='single.php?id="+item.id+"'> "
-	    			+item.firstname+"</a> "+item.lastname+"</div></div>");
-
+	    		$( slideItem ).html("<div class='profileContent'><div class='profileContentInner'><label class='profileName'><a href='single.php?id="+item.id+"'> "
+	    			+item.firstname+" "+item.lastname+
+	    			"</a> </label><img class='profilePicture' src='https://organicthemes.com/demo/profile/files/2012/12/profile_img.png'><span class='profileSkills'><br><u>SKILLS:</u><ul><li>"+item.skills+"</li></ul></span><div class='profileShortDesc'><label><u>Description:</u></label>"+item.lookingfor+"</div></div></div>");
+	    			
 				slideindex++;
 
 			});
@@ -250,7 +260,7 @@ function getProfilesStart(initUrl){
 
 	    		$( slideItem ).html("<div class='profileContent'><div class='profileContentInner'><label class='profileName'><a href='single.php?id="+item.id+"'> "
 	    			+item.firstname+" "+item.lastname+
-	    			"</a> </label><img class='profilePicture' src='https://organicthemes.com/demo/profile/files/2012/12/profile_img.png'><span class='profileSkills'><br><u>SKILLS:</u><ul><li>PHP</li><li>JavaScript</li><li>CSS</li></ul></span><div class='profileShortDesc'><label><u>Description:</u></label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div></div>");
+	    			"</a> </label><img class='profilePicture' src='https://organicthemes.com/demo/profile/files/2012/12/profile_img.png'><span class='profileSkills'><br><u>SKILLS:</u><ul><li>"+item.skills+"</li></ul></span><div class='profileShortDesc'><label><u>Description:</u></label>"+item.lookingfor+"</div></div></div>");
 	    			//.css("background-image","url("+item.profilepicture+")")
 					slideindex++;
 
@@ -291,3 +301,32 @@ function errorHndl(request, status, error) {
     console.log(request.responseText, status.responseText, error.responseText);
 
 }
+
+///admin page
+
+$(document).ready(function() {
+$("#register").click(function() {
+var name = $("#name").val();
+var email = $("#email").val();
+var password = $("#password").val();
+var cpassword = $("#cpassword").val();
+if (name == '' || email == '' || password == '' || cpassword == '') {
+alert("Please fill all fields...!!!!!!");
+} else if ((password.length) < 8) {
+alert("Password should atleast 8 character in length...!!!!!!");
+} else if (!(password).match(cpassword)) {
+alert("Your passwords don't match. Try again?");
+} else {
+$.post("register.php", {
+name1: name,
+email1: email,
+password1: password
+}, function(data) {
+if (data == 'You have Successfully Registered.....') {
+$("form")[0].reset();
+}
+alert(data);
+});
+}
+});
+});
