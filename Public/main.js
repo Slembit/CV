@@ -23,7 +23,7 @@ var token = getCookie('token');
 console.log(token);
 
 
-// initURL('init');
+initURL('init');
 
 
 function initURL(hasSelection, skillSelection){
@@ -57,7 +57,6 @@ function initURL(hasSelection, skillSelection){
 	    	console.log($(this).val());
 	    	skillSelection.push($(this).val());
 
-
 	    });
 	    
 
@@ -67,7 +66,6 @@ function initURL(hasSelection, skillSelection){
 	    initURL('skills', skillSelection);
 	    // e.preventDefault();
 	});
-
 
 
 
@@ -190,20 +188,19 @@ $('#slider').on('swipe', function(event, slick, direction){
 
 
 
-function getNextProfile(initUrl){
+function getNextProfile(nextProfileUrl){
 /*console.log("id");
 console.log(id);
 console.log("token");
 console.log(token);
 console.log("http://www.therewillbecode.se/slick2/?/persons/"+id+"/loadnextprofile/1&token="+token);
 */
-	profilesToLoad = 1;
-	console.log(initUrl);
+	console.log(nextProfileUrl);
 	console.log(token);
 	$.ajax({ 
 	     type: "GET",
 	     dataType: "json",
-	     url: initUrl,
+	     url: nextProfileUrl,
 	     success: function(data){  
 //console.log("lul2");   
 	     $.each(data, function(i, item){
