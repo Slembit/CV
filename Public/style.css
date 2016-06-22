@@ -1,119 +1,112 @@
- body{
-    background-color:black;
-    color:white;
-    font-family: arial;
-  }
+body{
+  background-color:black;
+  color:white;
+  font-family: arial;
+}
+.whiteFrame div{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.header{
+  height: 20px;
+  width: 100%;
+  color: white;
+  position:absolute;
+  z-index: 9999999;
+}    
+.headerStart{
+  height: 20px;
+  width: 100%;
+  color: white;
+  z-index: 9999999;
+}
+.menuLogo{
+  float: left;
+  border: 3px solid white;
+  padding: 3px;
+  margin-left: 10px;
+}
+.menuBtn{
+  float:right;
+  margin-right: 20px;
+  color:white;
+  border: 3px solid white;
+  padding: 3px;
+}
+a{
+  text-decoration: none;
+  color:white;
+  text-transform: uppercase;
 
-    .whiteFrame div{
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-    .header{
-      height: 20px;
-      width: 100%;
-      color: white;
-      position:absolute;
-      z-index: 9999999;
-    }    
-    .headerStart{
-      height: 20px;
-      width: 100%;
-      color: white;
-      z-index: 9999999;
-    }
-    .menuLogo{
-      float: left;
-      border: 3px solid white;
-      padding: 3px;
-      margin-left: 10px;
-    }
-    .menuBtn{
-      float:right;
-      margin-right: 20px;
-      color:white;
-      border: 3px solid white;
-      padding: 3px;
-    }
-    a{
-      text-decoration: none;
-      color:white;
-      text-transform: uppercase;
+}
+a:visited{
+  color:white;
+}
+.menuBtnForm{
+  float:right;
+  margin-right: 20px;
+}
+.logoutBtn{
+  float:right;
+  margin-right: 20px;background:none;
+  border:none;
+  font-size:1em;
+  border: 3px solid white;
+  color: white;
+  padding: 3px;
 
-    }
-    a:visited{
-      color:white;
-    }
-    .menuBtnForm{
-      float:right;
-      margin-right: 20px;
-    }
-    .logoutBtn{
-      float:right;
-      margin-right: 20px;background:none;
-      border:none;
-      font-size:1em;
-      border: 3px solid white;
-      color: white;
-      padding: 3px;
+}
 
-    }
+.profileContent{
+  padding: 10%;
 
-    .profileContent{
-      padding: 10%;
+}    
 
-    }    
+.profileContentInner{
 
-    .profileContentInner{
-
-      border: 3px solid white;
-    }
-    #sliderBg1{
-    }
-    #sliderBg2{
-      opacity: 0;
-    }    
-    #sliderBg3{
-      opacity: 0;
-    }
-    #settingsDiv{
-      height: 30vh;
-      color: white;
-      padding-top: 50px;
-      text-align: center;
-
-    }
-    .selectedSliderBg{
-            position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-    #slider{
-      z-index: 999;
-    }
-    .sliderStart{
+  border: 3px solid white;
+}
+#sliderBg2{
+  opacity: 0;
+}    
+#sliderBg3{
+  opacity: 0;
+}
+#settingsDiv{
+  height: 30vh;
+  color: white;
+  padding-top: 50px;
+  text-align: center;
+}
+.selectedSliderBg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#slider{
+  z-index: 999;
+}
+.sliderStart{
   height: 60vh;
 }
 .startSliderBg{
   position: absolute;
-      width: 100%;
-      height: 60vh;
+  width: 100%;
+  height: 60vh;
 }
-        input[type=checkbox] {
-   position: absolute;
-   top: -9999px;
-   left: -9999px;
-   /* For mobile, it's typically better to position checkbox on top of clickable
-      area and turn opacity to 0 instead. */
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
 }
 input[type=checkbox]:checked + label {
   color: black;
   background-color: white;
-
   font-style: normal;
 } 
 .checkboxLabel{
@@ -127,38 +120,27 @@ input[type=checkbox]:checked + label {
 }
 .settingsBtn{
   width: 100%;
-      background-color: white;
-    border: none;
-    color: black;
-    margin-top: 3px;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.opacityFadeOut{
-  
-}
-.opacityFadeIn{
-  
+  background-color: white;
+  border: none;
+  color: black;
+  margin-top: 3px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 .hidden{
   visibility: hidden;
 }
-
-
-
-  #singleCv{
-    padding-top: 50px;
-    width: 100%;
-    height: 100%;
-    color: white;
-    font-weight: bold;
-    background-size: cover;
-  }
-
+#singleCv{
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  background-size: cover;
+}
 /*start slider*/
 .profilePicture{
   width: 90px;
@@ -179,24 +161,22 @@ h2{
   width: 400px;
 }
 ul{
-    list-style-type: none;
+  list-style-type: none;
 }
-/*start slider*/
-
+/*end slider*/
 .loginForm{
   margin-top:40px;
 }
 .loginForm input{
-     border: 3px solid white; 
-    color:white;
-    padding: 10px;
-    background: black;
-    margin: 0 0 10px 0;
-
+  border: 3px solid white; 
+  color:white;
+  padding: 10px;
+  background: black;
+  margin: 0 0 10px 0;
 }
 .loginForm button{
-      color:white;
-      border: 3px solid white;
-      padding: 10px;
-      background: black;
+  color:white;
+  border: 3px solid white;
+  padding: 10px;
+  background: black;
 }
